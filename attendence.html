@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard & Random Sets</title>
+  <link rel="stylesheet" href="styles2.css">
+  <style>body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5;
+  }
+  
+  .dashboard, .random-sets {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 1000px;
+    margin: 20px 0;
+  }
+  
+  /* Updated color scheme based on the image */
+  .high {
+    color: #007bff; /* Strong blue color for high */
+  }
+  
+  .medium {
+    color: #ffc107; /* Yellow color for medium */
+  }
+  
+  .low {
+    color: #dc3545; /* Red color for low */
+  }
+  
+  </style>
+</head>
+<body>
+
+  <!-- Student Dashboard Section -->
+  <div class="dashboard" id="dashboard">
+    <header class="header">
+      <div class="college-info">
+        <h1>Student Attendance</h1>
+      </div>
+      <div class="student-info">
+        <p><strong>Student Name:</strong> <span id="studentName">John Doe</span></p>
+        <p><strong>Student ID:</strong> <span id="studentID">123456</span></p>
+        <p><strong>Date:</strong> <span id="current-date"></span></p>
+      </div>
+    </header>
+
+    <main>
+      <section class="attendance-overview">
+        <h2>Attendance Overview</h2>
+        <div class="overview-content">
+          <div class="attendance-percentage">
+            <p>Overall Attendance</p>
+            <span id="attendancePercentage">85%</span>
+          </div>
+          <div class="attendance-notification">
+            <p id="attendanceNotification">Warning: Low Attendance in Subject 1</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="subject-attendance">
+        <h2>Subject-Wise Attendance</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Total Classes</th>
+              <th>Classes Attended</th>
+              <th>Attendance %</th>
+            </tr>
+          </thead>
+          <tbody id="subjectTableBody">
+            <!-- Data will be dynamically inserted here -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+
+
+  <script>
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString();
+
+    // Predefined list of unique names for each roll number
+    const names = [
+    "Aadarsh Reddy", "Aditi Reddy", "Ajay Kumar", "Akshay Reddy", "Ananya Reddy", 
+    "Aravind Reddy", "Bhuvaneshwari Reddy", "Chaitanya Reddy", "Chandana Reddy", "Devi Reddy", 
+    "Dinesh Reddy", "Gaurav Reddy", "Geethika Reddy", "Harsha Reddy", "Haritha Reddy", 
+    "Ishaan Reddy", "Jyothi Reddy", "Karthik Reddy", "Keerthi Reddy", "Kiran Kumar", 
+    "Krishna Reddy", "Kumari Reddy", "Lakshmi Reddy", "Laxman Reddy", "Madhavi Reddy", 
+    "Manju Reddy", "Mithun Reddy", "Nandini Reddy", "Nikhil Reddy", "Pradeep Reddy", 
+    "Preeti Reddy", "Prithvi Reddy", "Raghavendra Reddy", "Rajeshwari Reddy", "Ravi Kumar", 
+    "Rohit Reddy", "Sakshi Reddy", "Sandeep Reddy", "Savitri Reddy", "Siddharth Reddy", 
+    "Simran Reddy", "Subramanyam Reddy", "Suresh Reddy", "Teja Reddy", "Tharun Reddy", 
+    "Uday Reddy", "Usha Reddy", "Vamsi Reddy", "Vasantha Reddy", "Venkatesh Reddy", 
+    "Vinay Reddy", "Vishnu Reddy", "Yashwanth Reddy", "Zara Reddy", "Aadhya Reddy", 
+    "Aditya Reddy", "Anil Reddy", "Anjali Reddy", "Anirudh Reddy", "Arjun Reddy", 
+    "Bhavana Reddy", "Bharani Reddy", "Bikram Reddy", "Chaitanya Kumar", "Chandini Reddy", 
+    "Charan Kumar", "Chiranjeevi Reddy", "Deepa Reddy", "Deepak Reddy", "Deva Reddy", 
+    "Divya Reddy", "Eshwar Reddy", "Ganesh Reddy", "Gayathri Reddy", "Gopi Reddy", 
+    "Harish Kumar", "Haritha Kumar", "Isha Reddy", "Jai Reddy", "Jayanthi Reddy", 
+    "Kalyani Reddy", "Karthik Kumar", "Kavitha Reddy", "Krishna Kumar", "Kumari Reddy", 
+    "Lavanya Reddy", "Lalitha Reddy", "Manasa Reddy", "Manohar Reddy", "Madhavi Kumar", 
+    "Maya Reddy", "Mohan Reddy", "Naveen Reddy", "Niharika Reddy", "Nithin Reddy", 
+    "Nithya Reddy", "Praveen Reddy", "Prema Reddy", "Rama Reddy", "Ravi Kumar", 
+    "Ravi Teja", "Rekha Reddy", "Rita Reddy", "Sailaja Reddy", "Sai Kumar", 
+    "Sandeep Kumar", "Sasi Reddy", "Sowmya Reddy", "Srinivas Reddy", "Suman Reddy", 
+    "Sushma Reddy", "Tejas Reddy", "Trishala Reddy", "Udaya Reddy", "Uma Reddy", 
+    "Venkata Reddy", "Vishal Reddy", "Vidhya Reddy", "Vikram Reddy", "Vishnu Kumar", 
+    "Vasavi Reddy", "Yamini Reddy", "Yogesh Reddy", "Zahid Reddy", "Akhil Reddy", 
+    "Ananya Kumar", "Aparna Reddy", "Ashok Kumar", "Bala Reddy", "Bhargavi Reddy", 
+    "Chaitanya Kumar", "Chandana Kumar", "Chirag Reddy", "Dinesh Kumar", "Durga Reddy", 
+    "Eshwar Kumar", "Gayathri Kumar", "Harsha Kumar", "Haritha Kumar", "Ishwar Kumar", 
+    "Jaya Reddy", "Karthik Reddy", "Kiran Kumar", "Krishna Reddy", "Kumari Kumar", 
+    "Lavanya Kumar", "Madhavi Reddy", "Manoj Reddy", "Mithun Kumar", "Nagarjuna Kumar", 
+    "Nandhini Kumar", "Naveen Kumar", "Nikhil Kumar", "Pradeep Kumar", "Pooja Kumar", 
+    "Praveen Kumar", "Raghu Reddy", "Ravi Kumar", "Rohit Kumar", "Sagar Kumar", 
+    "Sandeep Kumar", "Sowmya Kumar", "Srinivas Kumar", "Sreeja Reddy", "Suman Kumar", 
+    "Teja Kumar", "Tharun Kumar", "Uday Kumar", "Vamsi Kumar", "Venkatesh Kumar", 
+    "Vinay Kumar", "Vishnu Kumar", "Yash Reddy", "Zara Kumar", "Aadhya Kumar", 
+    "Aditya Kumar", "Anjali Kumar", "Arvind Kumar", "Asha Reddy", "Babu Reddy", 
+    "Chandresh Kumar", "Charulatha Reddy", "Dinesh Reddy", "Geetha Kumar", "Gokul Kumar", 
+    "Ishita Reddy", "Jagadeesh Kumar", "Jaya Kumar", "Kiran Kumar", "Kavitha Kumar", 
+    "Krishna Reddy", "Lakshmi Kumar", "Laxman Kumar", "Madhurima Kumar", "Manju Kumar", 
+    "Madhavi Reddy", "Madhuri Reddy", "Nandini Kumar", "Nikhil Kumar", "Pooja Reddy", 
+    "Pradeep Kumar", "Raghu Kumar", "Rajesh Kumar", "Ravi Kumar", "Rohit Kumar", 
+    "Sasi Kumar", "Siddharth Kumar", "Sowmya Kumar", "Srinivas Reddy", "Teja Kumar"
+  ];
+  
+// Fixed attendance percentages for each roll number
+const attendances = [
+  85, 92, 76, 89, 93, 68, 74, 88, 91, 79, 72, 84, 90, 77, 85, 89, 72, 80, 66, 75, 
+  85, 88, 91, 84, 78, 90, 94, 80, 86, 79, 82, 76, 88, 70, 92, 87, 73, 80, 79, 84,
+  71, 93, 58, 77, 85, 92, 88, 80, 75, 64, 88, 74, 96, 82, 63, 79, 81, 86, 65, 90, 
+  95, 70, 77, 81, 89, 72, 68, 87, 79, 74, 81, 79, 93, 67, 90, 78, 88, 91, 76, 85,
+  84, 81, 68, 90, 93, 77, 70, 86, 95, 87, 84, 92, 65, 89, 76, 83, 75, 90, 71, 92, 
+  88, 69, 82, 80, 78, 85, 80, 74, 88, 66, 93, 84, 91, 79, 95, 81, 69, 76, 78, 89,
+  81, 85, 90, 72, 75, 86, 83, 79, 88, 81, 82, 93, 87, 75, 69, 93, 90, 87, 82, 74, 
+  86, 70, 77, 88, 89, 91, 78, 82, 79, 92, 80, 76, 93, 89, 81, 86, 85, 71, 79, 80, 
+  92, 74, 88, 75, 94, 84, 91, 70, 78, 83, 92, 69, 80, 85, 79, 71, 86, 75
+];
+
+// Prompt user for roll number
+const rollNumber = prompt("Please enter your roll number (1 to 160):");
+
+function getStudentData(roll) {
+  if (roll >= 1 && roll <= 160) {
+    const overallAttendancePercentage = attendances[roll - 1]; // Get overall attendance percentage
+
+    return {
+      name: names[roll - 1], // Assign fixed name from the list based on roll number
+      id: "ID" + roll,
+      attendance: overallAttendancePercentage, // Assign fixed attendance from the array
+      subjects: [
+        { name: "Subject 1", totalClasses: 30, attended: Math.round((overallAttendancePercentage / 100) * 30) },
+        { name: "Subject 2", totalClasses: 30, attended: Math.round((overallAttendancePercentage / 100) * 30) },
+        { name: "Subject 3", totalClasses: 30, attended: Math.round((overallAttendancePercentage / 100) * 30) },
+        { name: "Subject 4", totalClasses: 30, attended: Math.round((overallAttendancePercentage / 100) * 30) },
+        { name: "Subject 5", totalClasses: 30, attended: Math.round((overallAttendancePercentage / 100) * 30) }
+      ],
+      notification: overallAttendancePercentage < 75 ? "Warning: Low Attendance" : ""
+    };
+  } else {
+    return null;
+  }
+}
+
+// Display student data if roll number is valid
+const studentData = getStudentData(parseInt(rollNumber));
+if (studentData) {
+  document.getElementById('dashboard').style.display = 'block';
+  document.getElementById('studentName').textContent = studentData.name;
+  document.getElementById('studentID').textContent = studentData.id;
+  document.getElementById('attendancePercentage').textContent = studentData.attendance + "%";
+  document.getElementById('attendanceNotification').textContent = studentData.notification;
+
+  // Populate subject attendance table with the same attendance percentage for all subjects
+  const tbody = document.getElementById('subjectTableBody');
+  studentData.subjects.forEach(subject => {
+    const attendedPercentage = (subject.attended / subject.totalClasses) * 100;
+
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${subject.name}</td>
+      <td>${subject.totalClasses}</td>
+      <td>${subject.attended}</td>
+      <td class="${attendedPercentage < 75 ? 'low' : attendedPercentage < 90 ? 'medium' : 'high'}">
+        ${Math.round(attendedPercentage)}%
+      </td>`;
+    tbody.appendChild(row);
+  });
+} else {
+  alert("Invalid roll number. Please reload and enter a number between 1 and 160.");
+}
+
+   
+  </script>
+</body>
+</html>

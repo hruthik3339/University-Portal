@@ -1,0 +1,107 @@
+/* Reset some basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #dbe6f6, #c5796d);
+  color: #333;
+}
+
+.dashboard {
+  max-width: 900px;
+  margin: 2rem auto;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #3a6186, #89253e);
+  color: #fff;
+  padding: 1rem 2rem;
+}
+
+.college-info {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 1rem;
+}
+
+.student-info p {
+  margin: 0.3rem 0;
+}
+
+main {
+  padding: 2rem;
+}
+
+.attendance-overview, .subject-attendance {
+  margin-bottom: 1.5rem;
+}
+
+.attendance-overview h2, .subject-attendance h2 {
+  color: #3a6186;
+  margin-bottom: 1rem;
+}
+
+.overview-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #f7cac9, #92a8d1);
+  padding: 1rem;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.attendance-percentage span {
+  font-size: 2rem;
+  color: #f4f6f9;
+  font-weight: bold;
+}
+
+.attendance-notification p {
+  color: #ffe66d;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 0.8rem;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background: linear-gradient(135deg, #3a6186, #89253e);
+  color: #fff;
+}
+
+td.low {
+  color: #e74c3c;
+}
+
+td.medium {
+  color: #f39c12;
+}
+
+td.high {
+  color: #27ae60;
+}

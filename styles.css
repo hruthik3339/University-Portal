@@ -1,0 +1,149 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #3C3243;
+  color: #FFFFFF;
+}
+
+.navbar {
+  background-color: #0B0B0D;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+  padding: 0 20px;
+}
+
+.navbar h2 {
+  font-size: 1.8em;
+  color: #FFFFFF;
+}
+
+.navbar a {
+  color: #FFFFFF;
+  padding: 14px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 10px;
+}
+
+.navbar a:hover {
+  background-color: #52454B;
+  color: #FFD700;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  
+  .navbar h2 {
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .navbar a {
+    padding: 10px 15px;
+    font-size: 0.9em;
+  }
+}
+
+.footer {
+  background-color: #0B0B0D;
+  color: #FFFFFF;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.footer-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+}
+
+.footer-column h3 {
+  color: #FFD700;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #FFD700;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #999;
+}
+
+/* Smaller screens (≤ 650px) */
+@media (max-width: 650px) {
+  .footer-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-column {
+    flex: 1 1 100%;
+  }
+
+  .footer-column h3 {
+    font-size: 1em;
+  }
+}
+
+/* Responsive nav menu adjustments for very small screens */
+
+
+}
+ 
+.TOPBUTTON,
+.top{
+    background-color: #0B0B0D;
+    color: #FFFFFF;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    font-weight: bolder;
+    font-size: larger;
+    height: 80px;
+    width: 80px;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 50%;
+    border: 5px solid #6F465A;
+    align-content: center;
+    text-decoration: none;
+}
+.TOPBUTTON:hover {
+    color: #FFD700;
+}

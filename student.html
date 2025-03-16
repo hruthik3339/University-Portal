@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal</title>
+  <style>
+    /* CSS Styles */
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4e54c8, #8f94fb);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #4e54c8;
+    }
+
+    .input-section {
+      margin-bottom: 20px;
+    }
+
+    .input-section label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .input-section input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .input-section button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #4e54c8;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .input-section button:hover {
+      background-color: #3e44a8;
+    }
+
+    #classInfo, #nameInfo {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .portal {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .navbar a {
+      margin: 0 10px;
+      color: #4e54c8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      margin-top: 20px;
+    }
+
+    .content h2 {
+      color: #4e54c8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Student Portal</h1>
+    <div class="input-section">
+      <label for="rollNumber">Enter Roll Number:</label>
+      <input type="number" id="rollNumber" placeholder="1-160" min="1" max="160">
+      <button onclick="checkRollNumber()">Submit</button>
+      <p id="classInfo"></p>
+      <p id="nameInfo"></p>
+    </div>
+
+    <div id="portal" class="portal">
+      <nav class="navbar">
+        <a href="attendence.html">Attendance</a>
+        <a href="#">Personal Information</a>
+        <a href="#">Academic Records</a>
+      </nav>
+      <div class="content">
+        <h2>Welcome, <span id="studentName"></span></h2>
+        <p>Your class is: <span id="classDisplay"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript Code
+    const names = [
+      "Aadarsh Reddy", "Aditi Reddy", "Ajay Kumar", "Akshay Reddy", "Ananya Reddy", 
+      "Aravind Reddy", "Bhuvaneshwari Reddy", "Chaitanya Reddy", "Chandana Reddy", "Devi Reddy", 
+      "Dinesh Reddy", "Gaurav Reddy", "Geethika Reddy", "Harsha Reddy", "Haritha Reddy", 
+      "Ishaan Reddy", "Jyothi Reddy", "Karthik Reddy", "Keerthi Reddy", "Kiran Kumar", 
+      "Krishna Reddy", "Kumari Reddy", "Lakshmi Reddy", "Laxman Reddy", "Madhavi Reddy", 
+      "Manju Reddy", "Mithun Reddy", "Nandini Reddy", "Nikhil Reddy", "Pradeep Reddy", 
+      "Preeti Reddy", "Prithvi Reddy", "Raghavendra Reddy", "Rajeshwari Reddy", "Ravi Kumar", 
+      "Rohit Reddy", "Sakshi Reddy", "Sandeep Reddy", "Savitri Reddy", "Siddharth Reddy", 
+      "Simran Reddy", "Subramanyam Reddy", "Suresh Reddy", "Teja Reddy", "Tharun Reddy", 
+      "Uday Reddy", "Usha Reddy", "Vamsi Reddy", "Vasantha Reddy", "Venkatesh Reddy", 
+      "Vinay Reddy", "Vishnu Reddy", "Yashwanth Reddy", "Zara Reddy", "Aadhya Reddy", 
+      "Aditya Reddy", "Anil Reddy", "Anjali Reddy", "Anirudh Reddy", "Arjun Reddy", 
+      "Bhavana Reddy", "Bharani Reddy", "Bikram Reddy", "Chaitanya Kumar", "Chandini Reddy", 
+      "Charan Kumar", "Chiranjeevi Reddy", "Deepa Reddy", "Deepak Reddy", "Deva Reddy", 
+      "Divya Reddy", "Eshwar Reddy", "Ganesh Reddy", "Gayathri Reddy", "Gopi Reddy", 
+      "Harish Kumar", "Haritha Kumar", "Isha Reddy", "Jai Reddy", "Jayanthi Reddy", 
+      "Kalyani Reddy", "Karthik Kumar", "Kavitha Reddy", "Krishna Kumar", "Kumari Reddy", 
+      "Lavanya Reddy", "Lalitha Reddy", "Manasa Reddy", "Manohar Reddy", "Madhavi Kumar", 
+      "Maya Reddy", "Mohan Reddy", "Naveen Reddy", "Niharika Reddy", "Nithin Reddy", 
+      "Nithya Reddy", "Praveen Reddy", "Prema Reddy", "Rama Reddy", "Ravi Kumar", 
+      "Ravi Teja", "Rekha Reddy", "Rita Reddy", "Sailaja Reddy", "Sai Kumar", 
+      "Sandeep Kumar", "Sasi Reddy", "Sowmya Reddy", "Srinivas Reddy", "Suman Reddy", 
+      "Sushma Reddy", "Tejas Reddy", "Trishala Reddy", "Udaya Reddy", "Uma Reddy", 
+      "Venkata Reddy", "Vishal Reddy", "Vidhya Reddy", "Vikram Reddy", "Vishnu Kumar", 
+      "Vasavi Reddy", "Yamini Reddy", "Yogesh Reddy", "Zahid Reddy", "Akhil Reddy", 
+      "Ananya Kumar", "Aparna Reddy", "Ashok Kumar", "Bala Reddy", "Bhargavi Reddy", 
+      "Chaitanya Kumar", "Chandana Kumar", "Chirag Reddy", "Dinesh Kumar", "Durga Reddy", 
+      "Eshwar Kumar", "Gayathri Kumar", "Harsha Kumar", "Haritha Kumar", "Ishwar Kumar", 
+      "Jaya Reddy", "Karthik Reddy", "Kiran Kumar", "Krishna Reddy", "Kumari Kumar", 
+      "Lavanya Kumar", "Madhavi Reddy", "Manoj Reddy", "Mithun Kumar", "Nagarjuna Kumar", 
+      "Nandhini Kumar", "Naveen Kumar", "Nikhil Kumar", "Pradeep Kumar", "Pooja Kumar", 
+      "Praveen Kumar", "Raghu Reddy", "Ravi Kumar", "Rohit Kumar", "Sagar Kumar", 
+      "Sandeep Kumar", "Sowmya Kumar", "Srinivas Kumar", "Sreeja Reddy", "Suman Kumar", 
+      "Teja Kumar", "Tharun Kumar", "Uday Kumar", "Vamsi Kumar", "Venkatesh Kumar", 
+      "Vinay Kumar", "Vishnu Kumar", "Yash Reddy", "Zara Kumar", "Aadhya Kumar", 
+      "Aditya Kumar", "Anjali Kumar", "Arvind Kumar", "Asha Reddy", "Babu Reddy", 
+      "Chandresh Kumar", "Charulatha Reddy", "Dinesh Reddy", "Geetha Kumar", "Gokul Kumar", 
+      "Ishita Reddy", "Jagadeesh Kumar", "Jaya Kumar", "Kiran Kumar", "Kavitha Kumar", 
+      "Krishna Reddy", "Lakshmi Kumar", "Laxman Kumar", "Madhurima Kumar", "Manju Kumar", 
+      "Madhavi Reddy", "Madhuri Reddy", "Nandini Kumar", "Nikhil Kumar", "Pooja Reddy", 
+      "Pradeep Kumar", "Raghu Kumar", "Rajesh Kumar", "Ravi Kumar", "Rohit Kumar", 
+      "Sasi Kumar", "Siddharth Kumar", "Sowmya Kumar", "Srinivas Reddy", "Teja Kumar"
+    ];
+
+    function checkRollNumber() {
+      const rollNumber = parseInt(document.getElementById("rollNumber").value);
+      const classInfo = document.getElementById("classInfo");
+      const nameInfo = document.getElementById("nameInfo");
+      const portal = document.getElementById("portal");
+      const classDisplay = document.getElementById("classDisplay");
+      const studentName = document.getElementById("studentName");
+
+      if (rollNumber >= 1 && rollNumber <= 160) {
+        const name = names[rollNumber - 1];
+        studentName.innerText = name;
+        nameInfo.innerText = `Name: ${name}`;
+
+        if (rollNumber <= 40) {
+          classInfo.innerText = "Class 1";
+          classDisplay.innerText = "Class 1";
+        } else if (rollNumber <= 80) {
+          classInfo.innerText = "Class 2";
+          classDisplay.innerText = "Class 2";
+        } else if (rollNumber <= 120) {
+          classInfo.innerText = "Class 3";
+          classDisplay.innerText = "Class 3";
+        } else {
+          classInfo.innerText = "Class 4";
+          classDisplay.innerText = "Class 4";
+        }
+
+        portal.style.display = "block";
+      } else {
+        alert("Please enter a valid roll number between 1 and 160.");
+      }
+    }
+  </script>
+
+</body>
+</html>

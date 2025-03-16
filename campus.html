@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus</title>
+
+    <style>
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3C3243;
+            color: #FFFFFF;
+        }
+        
+        .navbar {
+            background-color: #0B0B0D;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 15vh;
+            padding: 0 20px;
+        }
+        
+        .navbar h2 {
+            font-size: 1.8em;
+            color: #FFFFFF;
+        }
+        
+        .navbar a {
+            color: #FFFFFF;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 10px;
+        }
+        
+        .navbar a:hover {
+            background-color: #52454B;
+            color: #FFD700;
+        }
+        
+        /* Responsive Layout */
+        @media (max-width: 1024px) {
+            .navbar h2 {
+                font-size: 1.5em;
+            }
+            .navbar {
+                padding: 0 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar h2 {
+                font-size: 1.3em;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar a {
+                padding: 10px 15px;
+            }
+        }
+        
+        @media (max-width: 650px) {
+            .navbar {
+                flex-direction: column;
+                padding: 0 10px;
+                text-align: center;
+            }
+            .navbar h2 {
+                font-size: 1.2em;
+            }
+            .navbar a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Mobile layout for smaller screens */
+        @media (max-width: 480px) {
+            .navbar h2 {
+                font-size: 1em;
+            }
+            .navbar {
+                flex-direction: column;
+                padding: 0 5px;
+                text-align: center;
+            }
+            .navbar a {
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+        }
+        
+        /* Additional responsive adjustments */
+        @media (max-width: 320px) {
+            .navbar h2 {
+                font-size: 0.9em;
+            }
+            .navbar a {
+                padding: 5px 8px;
+                font-size: 0.7em;
+            }
+        }
+        
+        /* Responsive dropdown menu adjustments */
+        @media (max-width: 768px) {
+            nav .menu {
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+        
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem 0;
+                justify-content: space-around;
+            }
+        }
+        
+        @media (max-width: 650px) {
+            nav .menu {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+        
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem 0;
+                justify-content: space-around;
+            }
+        }
+        
+        /* Adjustments for larger screen */
+        @media (min-width: 1440px) {
+            .navbar h2 {
+                font-size: 2em;
+            }
+            .navbar a {
+                padding: 16px 24px;
+                font-size: 1em;
+            }
+        }
+        
+        
+        h1, h2 {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            width: 90vw;
+            margin-left: 5vw;
+            background-color: #52454B;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section img {
+            width: 86vw;
+            height: 70vh;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .description {
+            margin-top: 15px;
+        }
+        .TOPBUTTON,
+        .top{
+            background-color: #0B0B0D;
+            color: #FFFFFF;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            font-weight: bolder;
+            font-size: larger;
+            height: 80px;
+            width: 80px;
+            text-align: center;
+            font-size: 1.2em;
+            border-radius: 50%;
+            border: 5px solid #6F465A;
+            align-content: center;
+            text-decoration: none;
+        }
+        .TOPBUTTON:hover {
+            color: #FFD700;
+        }
+
+.footer {
+    background-color: #0B0B0D;
+    color: #FFFFFF;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.footer-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.footer-column {
+    flex: 1 1 200px;
+}
+
+.footer-column h3 {
+    color: #FFD700;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #FFD700;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #999;
+}
+
+    </style>
+
+</head>
+<body>
+
+    <div class="navbar">
+        <h2>University Portal</h2>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="academic.html">Academics</a>
+            <a href="campus.html">Campus</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Page Header -->
+    <div class="container">
+        <header>
+            <h1 style="margin-left: 5vw;margin-top: 2vw;">Welcome to Our Campus</h1>
+            <p style="margin-bottom: 40px;margin-left: 5vw;">Explore our beautiful campus, state-of-the-art facilities, and diverse academic departments. Here are some highlights of what our university has to offer.</p>
+        </header >
+
+        <!-- Library Section -->
+        <div class="section" id="library">
+            <h2>University Library</h2>
+            <div class="description">
+                <p>Our library offers a vast collection of books, journals, and digital resources. It is a hub for research, study, and learning for students and faculty alike. Equipped with modern facilities and quiet study areas, it's the perfect place to expand your knowledge.</p>
+            </div>
+            <img src="library1.jpg" alt="University Library">
+        </div>
+
+        <!-- Science Labs Section -->
+        <div class="section" id="science-labs">
+            <h2>Science Labs</h2>
+            <div class="description">
+                <p>Our science laboratories are fully equipped for students pursuing courses in physics, chemistry, biology, and other scientific disciplines. These labs provide hands-on experience and are maintained to the highest safety standards.</p>
+            </div>
+            <img src="sciencelab.jpg" alt="Science Labs">
+        </div>
+
+        <!-- Sports Complex Section -->
+        <div class="section" id="sports-complex">
+            <h2>Sports Complex</h2>
+            <div class="description">
+                <p>The sports complex features facilities for a variety of sports including basketball, tennis, and soccer. Whether you're a serious athlete or just looking for recreation, our sports complex has something for everyone.</p>
+            </div>
+            <img src="ground.jpg" alt="Sports Complex">
+        </div>
+
+        <!-- Cafeteria Section -->
+        <div class="section" id="cafeteria">
+            <h2>Cafeteria</h2>
+            <div class="description">
+                <p>Our cafeteria serves a range of healthy and delicious meals, snacks, and beverages. It is a popular gathering place for students to socialize, relax, and enjoy quality food at affordable prices.</p>
+            </div>
+            <img src="cafe.jpg" alt="Cafeteria">
+        </div>
+
+        <!-- Student Dormitories Section -->
+        <div class="section" id="dormitories">
+            <h2>Student Dormitories</h2>
+            <div class="description">
+                <p>Our campus offers comfortable and secure dormitories, providing students with a sense of community and convenience. Each dormitory is well-maintained and equipped with essential amenities for a comfortable stay.</p>
+        </div>
+            <img src="domi.jpg" alt="Student Dormitories">
+        </div>
+
+        <div class="section" id="administrative-building">
+            <h2>Administrative Building</h2>
+            <div class="description">
+                <p>The administrative building houses important offices such as Admissions, Financial Aid, and Student Services. Our dedicated staff is available to assist students with any administrative needs they may have.</p>
+            </div>
+            <img src="administration.jpg" alt="Administrative Building">
+        </div>
+
+        <div class="top"><A href="#"><button class="TOPBUTTON">TOP</button></A></div>
+    <footer class="footer">
+
+        <div class="footer-section">
+
+            <div class="footer-column">
+                <h3>Administration Wing</h3>
+                <ul>
+                    <li><a href="#">Academic Affairs</a></li>
+                    <li><a href="#">Development Council</a></li>
+                    <li><a href="#">Research & Development</a></li>
+                    <li><a href="#">Computer Centre</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Central Facilities</h3>
+                <ul>
+                    <li><a href="#">Library</a></li>
+                    <li><a href="#">Health Services</a></li>
+                    <li><a href="#">Transport</a></li>
+                    <li><a href="#">Research Centres</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Online Courses</h3>
+                <ul>
+                    <li><a href="#">Swayam Central</a></li>
+                    <li><a href="#">e-PGPathshala</a></li>
+                    <li><a href="#">Digital Library</a></li>
+                    <li><a href="#">Vidwan</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>University Hostels</h3>
+                <ul>
+                    <li><a href="#">Arts & Commerce Hostel</a></li>
+                    <li><a href="#">Science & Technology Hostel</a></li>
+                    <li><a href="#">Engineering Hostel</a></li>
+                    <li><a href="#">Ladies Hostel</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            Contact Us: Example University, City, Country. Phone: 000-000-0000<br>
+            &copy; 2024 Example University. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

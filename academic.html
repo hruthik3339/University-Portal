@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic</title>
+    
+    <style>
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3C3243;
+            color: #FFFFFF;
+        }
+        
+        .navbar {
+            background-color: #0B0B0D;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 15vh;
+            padding: 0 20px;
+        }
+        
+        .navbar h2 {
+            font-size: 1.8em;
+            color: #FFFFFF;
+        }
+        
+        .navbar a {
+            color: #FFFFFF;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 10px;
+        }
+        
+        .navbar a:hover {
+            background-color: #52454B;
+            color: #FFD700;
+        }
+        
+        /* Responsive Layout */
+        @media (max-width: 1024px) {
+            .navbar h2 {
+                font-size: 1.5em;
+            }
+            .navbar {
+                padding: 0 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar h2 {
+                font-size: 1.3em;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar a {
+                padding: 10px 15px;
+            }
+        }
+        
+        @media (max-width: 650px) {
+            .navbar {
+                flex-direction: column;
+                padding: 0 10px;
+                text-align: center;
+            }
+            .navbar h2 {
+                font-size: 1.2em;
+            }
+            .navbar a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Mobile layout for smaller screens */
+        @media (max-width: 480px) {
+            .navbar h2 {
+                font-size: 1em;
+            }
+            .navbar {
+                flex-direction: column;
+                padding: 0 5px;
+                text-align: center;
+            }
+            .navbar a {
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+        }
+        
+        /* Additional responsive adjustments */
+        @media (max-width: 320px) {
+            .navbar h2 {
+                font-size: 0.9em;
+            }
+            .navbar a {
+                padding: 5px 8px;
+                font-size: 0.7em;
+            }
+        }
+        
+        /* Responsive dropdown menu adjustments */
+        @media (max-width: 768px) {
+            nav .menu {
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+        
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem 0;
+                justify-content: space-around;
+            }
+        }
+        
+        @media (max-width: 650px) {
+            nav .menu {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+        
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem 0;
+                justify-content: space-around;
+            }
+        }
+        
+        /* Adjustments for larger screen */
+        @media (min-width: 1440px) {
+            .navbar h2 {
+                font-size: 2em;
+            }
+            .navbar a {
+                padding: 16px 24px;
+                font-size: 1em;
+            }
+        }
+        
+.header {
+    background-color: #3c3243;
+    color:#fff ;
+    padding: 20px;
+    text-align: center;
+}
+.header h1 {
+    margin-top: 15px;
+    margin-left: 20px;
+    font-size: 36px;
+}
+
+.container {
+    padding: 15px;
+}
+.calendar-list {
+    list-style-type: none;
+    padding: 0;
+}
+.calendar-list li {
+    background-color: #483849 ;
+    margin: 5px 0;
+    padding: 10px;
+    border-left: 2px solid #52454B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.calendar-list li span.date {
+    font-weight: bold;
+    font-size: small;
+    color: #FFD700;
+}
+.new-icon {
+    font-size: 12px;
+    color: blueviolet;
+    margin-left: 5px;
+}
+
+.TOPBUTTON,
+.top{
+    background-color: #0B0B0D;
+    color: #FFFFFF;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    font-weight: bolder;
+    font-size: larger;
+    height: 80px;
+    width: 80px;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 50%;
+    border: 5px solid #6F465A;
+    align-content: center;
+    text-decoration: none;
+}
+.TOPBUTTON:hover {
+    color: #FFD700;
+}
+
+.footer {
+    background-color: #0B0B0D;
+    color: #FFFFFF;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.footer-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.footer-column {
+    flex: 1 1 200px;
+}
+
+.footer-column h3 {
+    color: #FFD700;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #FFD700;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #999;
+}
+
+    </style>
+
+</head>
+<body>
+
+    <div class="navbar">
+        <h2>University Portal</h2>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="academic.html">Academics</a>
+            <a href="campus.html">Campus</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <div class="header">
+        <h1>Academic Calendar</h1>
+    </div>
+
+    <div class="container">
+        <ul class="calendar-list">
+            <li><span class="date">01/01/2024:</span> Academic Calendar Entry 1 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/01/2024:</span> Academic Calendar Entry 2 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/02/2024:</span> Academic Calendar Entry 3 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/02/2024:</span> Academic Calendar Entry 4 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/03/2024:</span> Academic Calendar Entry 5 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/03/2024:</span> Academic Calendar Entry 6 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/04/2024:</span> Academic Calendar Entry 7 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/04/2024:</span> Academic Calendar Entry 8 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/05/2024:</span> Academic Calendar Entry 9 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/05/2024:</span> Academic Calendar Entry 10 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/06/2024:</span> Academic Calendar Entry 11 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/06/2024:</span> Academic Calendar Entry 12 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/07/2024:</span> Academic Calendar Entry 13 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/07/2024:</span> Academic Calendar Entry 14 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/08/2024:</span> Academic Calendar Entry 15 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/08/2024:</span> Academic Calendar Entry 16 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/09/2024:</span> Academic Calendar Entry 17 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/09/2024:</span> Academic Calendar Entry 18 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/10/2024:</span> Academic Calendar Entry 19 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/10/2024:</span> Academic Calendar Entry 20 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/11/2024:</span> Academic Calendar Entry 21 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/11/2024:</span> Academic Calendar Entry 22 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/12/2024:</span> Academic Calendar Entry 23 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/12/2024:</span> Academic Calendar Entry 24 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/01/2025:</span> Academic Calendar Entry 25 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/01/2025:</span> Academic Calendar Entry 26 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/02/2025:</span> Academic Calendar Entry 27 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/02/2025:</span> Academic Calendar Entry 28 <span class="new-icon">NEW</span></li>
+            <li><span class="date">01/03/2025:</span> Academic Calendar Entry 29 <span class="new-icon">NEW</span></li>
+            <li><span class="date">15/03/2025:</span> Academic Calendar Entry 30 <span class="new-icon">NEW</span></li>
+        </ul>
+    </div>
+
+    <div class="top"><A href="#"><button class="TOPBUTTON">TOP</button></A></div>
+    <footer class="footer">
+
+        <div class="footer-section">
+
+            <div class="footer-column">
+                <h3>Administration Wing</h3>
+                <ul>
+                    <li><a href="#">Academic Affairs</a></li>
+                    <li><a href="#">Development Council</a></li>
+                    <li><a href="#">Research & Development</a></li>
+                    <li><a href="#">Computer Centre</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Central Facilities</h3>
+                <ul>
+                    <li><a href="#">Library</a></li>
+                    <li><a href="#">Health Services</a></li>
+                    <li><a href="#">Transport</a></li>
+                    <li><a href="#">Research Centres</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Online Courses</h3>
+                <ul>
+                    <li><a href="#">Swayam Central</a></li>
+                    <li><a href="#">e-PGPathshala</a></li>
+                    <li><a href="#">Digital Library</a></li>
+                    <li><a href="#">Vidwan</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>University Hostels</h3>
+                <ul>
+                    <li><a href="#">Arts & Commerce Hostel</a></li>
+                    <li><a href="#">Science & Technology Hostel</a></li>
+                    <li><a href="#">Engineering Hostel</a></li>
+                    <li><a href="#">Ladies Hostel</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            Contact Us: Example University, City, Country. Phone: 000-000-0000<br>
+            &copy; 2024 Example University. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

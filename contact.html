@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+    <style>
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3C3243;
+            color: #FFFFFF;
+        }
+        
+        .navbar {
+            background-color: #0B0B0D;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 15vh;
+            padding: 0 20px;
+        }
+        
+        .navbar h2 {
+            font-size: 1.8em;
+            color: #FFFFFF;
+        }
+        
+        .navbar a {
+            color: #FFFFFF;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 10px;
+        }
+        
+        .navbar a:hover {
+            background-color: #52454B;
+            color: #FFD700;
+        }
+        
+        /* Responsive Layout */
+        @media (max-width: 1024px) {
+            .navbar h2 {
+                font-size: 1.5em;
+            }
+            .navbar {
+                padding: 0 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar h2 {
+                font-size: 1.3em;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar a {
+                padding: 10px 15px;
+            }
+        }
+        
+        @media (max-width: 650px) {
+            .navbar {
+                flex-direction: column;
+                padding: 0 10px;
+                text-align: center;
+            }
+            .navbar h2 {
+                font-size: 1.2em;
+            }
+            .navbar a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Mobile layout for smaller screens */
+        @media (max-width: 480px) {
+            .navbar h2 {
+                font-size: 1em;
+            }
+            .navbar {
+                flex-direction: column;
+                padding: 0 5px;
+                text-align: center;
+            }
+            .navbar a {
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+        }
+        
+        /* Additional responsive adjustments */
+        @media (max-width: 320px) {
+            .navbar h2 {
+                font-size: 0.9em;
+            }
+            .navbar a {
+                padding: 5px 8px;
+                font-size: 0.7em;
+            }
+        }
+        
+        /* Responsive dropdown menu adjustments */
+        @media (max-width: 768px) {
+            nav .menu {
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+        
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem 0;
+                justify-content: space-around;
+            }
+        }
+        
+        @media (max-width: 650px) {
+            nav .menu {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+        
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem 0;
+                justify-content: space-around;
+            }
+        }
+        
+        /* Adjustments for larger screen */
+        @media (min-width: 1440px) {
+            .navbar h2 {
+                font-size: 2em;
+            }
+            .navbar a {
+                padding: 16px 24px;
+                font-size: 1em;
+            }
+        }
+        
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+        .contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .contact-card {
+            background-color: #483848;
+            width: 30%;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .contact-card h2 {
+            color: #ffd700;
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ffd700;
+            padding-bottom: 5px;
+        }
+        .contact-card p {
+            margin: 5px 0;
+        }
+        .contact-card a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .map-section {
+            margin: 20px 10px;
+            padding: 20px;
+            background-color: #3C3243;
+        }
+    
+        .TOPBUTTON,
+        .top{
+            background-color: #0B0B0D;
+            color: #FFFFFF;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            font-weight: bolder;
+            font-size: larger;
+            height: 80px;
+            width: 80px;
+            text-align: center;
+            font-size: 1.2em;
+            border-radius: 50%;
+            border: 5px solid #6F465A;
+            align-content: center;
+            text-decoration: none;
+        }
+        .TOPBUTTON:hover {
+            color: #FFD700;
+        }
+
+.footer {
+    background-color: #0B0B0D;
+    color: #FFFFFF;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.footer-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.footer-column {
+    flex: 1 1 200px;
+}
+
+.footer-column h3 {
+    color: #FFD700;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #FFD700;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #999;
+}
+
+
+    </style>
+
+</head>
+<body>
+
+    <div class="navbar">
+        <h2>University Portal</h2>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="academic.html">Academics</a>
+            <a href="campus.html">Campus</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+
+    <div class="container">
+        <h1>College Contact Information</h1>
+        <div class="contact-section">
+            <!-- Arts & Commerce -->
+            <div class="contact-card">
+                <h2>Arts & Commerce</h2>
+                <p><strong>Phone:</strong> +123 456 7890</p>
+                <p><strong>Email:</strong> <a href="mailto:arts@college.edu">arts@college.edu</a></p>
+                <p><strong>Address:</strong> Building A, College Campus</p>
+            </div>
+
+            <!-- Science & Technology -->
+            <div class="contact-card">
+                <h2>Science & Technology</h2>
+                <p><strong>Phone:</strong> +123 456 7891</p>
+                <p><strong>Email:</strong> <a href="mailto:science@college.edu">science@college.edu</a></p>
+                <p><strong>Address:</strong> Building B, College Campus</p>
+            </div>
+
+            <!-- Engineering -->
+            <div class="contact-card">
+                <h2>Engineering</h2>
+                <p><strong>Phone:</strong> +123 456 7892</p>
+                <p><strong>Email:</strong> <a href="mailto:engineering@college.edu">engineering@college.edu</a></p>
+                <p><strong>Address:</strong> Building C, College Campus</p>
+            </div>
+
+            <!-- Pharmaceutical Sciences -->
+            <div class="contact-card">
+                <h2>Pharmaceutical Sciences</h2>
+                <p><strong>Phone:</strong> +123 456 7893</p>
+                <p><strong>Email:</strong> <a href="mailto:pharmacy@college.edu">pharmacy@college.edu</a></p>
+                <p><strong>Address:</strong> Building D, College Campus</p>
+            </div>
+
+            <!-- Dr. B.R. Ambedkar College of Law -->
+            <div class="contact-card">
+                <h2>Dr. B.R. Ambedkar College of Law</h2>
+                <p><strong>Phone:</strong> +123 456 7894</p>
+                <p><strong>Email:</strong> <a href="mailto:law@college.edu">law@college.edu</a></p>
+                <p><strong>Address:</strong> Building E, College Campus</p>
+            </div>
+
+            <!-- Engineering for Women -->
+            <div class="contact-card">
+                <h2>Engineering for Women</h2>
+                <p><strong>Phone:</strong> +123 456 7895</p>
+                <p><strong>Email:</strong> <a href="mailto:wengineering@college.edu">wengineering@college.edu</a></p>
+                <p><strong>Address:</strong> Building F, College Campus</p>
+            </div>
+
+            <!-- School of International Business -->
+            <div class="contact-card">
+                <h2>School of International Business</h2>
+                <p><strong>Phone:</strong> +123 456 7896</p>
+                <p><strong>Email:</strong> <a href="mailto:business@college.edu">business@college.edu</a></p>
+                <p><strong>Address:</strong> Building G, College Campus</p>
+            </div>
+
+            <!-- Centre for Distance & Online Education -->
+            <div class="contact-card">
+                <h2>Centre for Distance & Online Education</h2>
+                <p><strong>Phone:</strong> +123 456 7897</p>
+                <p><strong>Email:</strong> <a href="mailto:distance@college.edu">distance@college.edu</a></p>
+                <p><strong>Address:</strong> Building H, College Campus</p>
+            </div>
+
+            <!-- IASE -->
+            <div class="contact-card">
+                <h2>IASE</h2>
+                <p><strong>Phone:</strong> +123 456 7898</p>
+                <p><strong>Email:</strong> <a href="mailto:iase@college.edu">iase@college.edu</a></p>
+                <p><strong>Address:</strong> Building I, College Campus</p>
+            </div>
+        </div>
+    </div>
+
+        <!-- Google Map Section -->
+    <div class="map-section">
+        <h2 style="text-align: center; color: #ffd700; margin-top: 20px; ">Our Location</h2>
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.5404163834284!2d144.95373581590452!3d-37.81697974202126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df1a9e1f1%3A0x5045675218ce6e0!2sUniversity%20of%20Melbourne!5e0!3m2!1sen!2sau!4v1615370985553!5m2!1sen!2sau" 
+            width="100%" 
+            height="400" 
+            scrolling="no" 
+            frameborder="0"
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <div class="top"><A href="#"><button class="TOPBUTTON">TOP</button></A></div>
+
+    <footer class="footer">
+
+        <div class="footer-section">
+
+            <div class="footer-column">
+                <h3>Administration Wing</h3>
+                <ul>
+                    <li><a href="#">Academic Affairs</a></li>
+                    <li><a href="#">Development Council</a></li>
+                    <li><a href="#">Research & Development</a></li>
+                    <li><a href="#">Computer Centre</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Central Facilities</h3>
+                <ul>
+                    <li><a href="#">Library</a></li>
+                    <li><a href="#">Health Services</a></li>
+                    <li><a href="#">Transport</a></li>
+                    <li><a href="#">Research Centres</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Online Courses</h3>
+                <ul>
+                    <li><a href="#">Swayam Central</a></li>
+                    <li><a href="#">e-PGPathshala</a></li>
+                    <li><a href="#">Digital Library</a></li>
+                    <li><a href="#">Vidwan</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>University Hostels</h3>
+                <ul>
+                    <li><a href="#">Arts & Commerce Hostel</a></li>
+                    <li><a href="#">Science & Technology Hostel</a></li>
+                    <li><a href="#">Engineering Hostel</a></li>
+                    <li><a href="#">Ladies Hostel</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            Contact Us: Example University, City, Country. Phone: 000-000-0000<br>
+            &copy; 2024 Example University. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
